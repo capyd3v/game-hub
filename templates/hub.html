@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Hub de Juegos - {{ total_games }} juegos disponibles{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>🎮 Bienvenido al Hub de Juegos</h1>
+    <p>Selecciona un juego para comenzar a jugar con amigos</p>
+    <div class="games-counter">
+        <span class="counter">{{ total_games }}</span> juegos disponibles
+    </div>
+</section>
+
+<section id="games" class="games-grid">
+    {% for game in games %}
+    <a href="{{ game.path }}" class="game-card">
+        <div class="game-icon">🎲</div>
+        <h3>{{ game.title }}</h3>
+        <p>{{ game.description }}</p>
+        <div class="game-meta">
+            <span class="game-play">Jugar ahora</span>
+            <span class="game-players">👥 2+ jugadores</span>
+        </div>
+    </a>
+    {% endfor %}
+    
+    {% if games|length == 0 %}
+    <div class="no-games">
+        <p>🎯 No hay juegos disponibles todavía.</p>
+        <p>Agrega juegos a la carpeta <code>games/</code></p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

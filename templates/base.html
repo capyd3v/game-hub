@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Hub de Juegos{% endblock %}</title>
+    <link rel="stylesheet" href="/static/hub/style.css">
+    <link rel="icon" href="/static/hub/favicon.ico">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header class="hub-header">
+        <div class="container">
+            <a href="/" class="logo">🎮 Hub de Juegos</a>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="#games">Juegos</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer class="hub-footer">
+        <div class="container">
+            <p>🎯 Juega y diviértete con amigos</p>
+            <p class="games-count">{{ total_games }} juegos disponibles</p>
+        </div>
+    </footer>
+    
+    <script src="/static/hub/script.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

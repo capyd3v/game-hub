@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: hub-juegos
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      # Mover archivos a la estructura correcta
+      mkdir -p static/hub
+      cp -r hub/static/hub/* static/hub/ || true
+      cp -r hub/templates . || true
+      cp hub/*.py . || true
+      cp -r hub/games . || true
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 8000
